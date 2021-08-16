@@ -17,7 +17,6 @@ public class LinkedList {
 
     public void addLast(int item) {
         var node = new Node(item);
-
         if (isEmpty())
             first = last = node;
         else{
@@ -34,5 +33,16 @@ public class LinkedList {
             node.next = first;
             first = node;
         }
+    }
+
+    public int indexOf(int item) {
+        var current = first;
+        var index = 0;
+        while(current != null) {
+            if(current.value == item) return index;
+            current = current.next;
+            index++;
+        }
+        return -1;
     }
 }
