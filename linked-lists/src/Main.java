@@ -1,6 +1,9 @@
 public class Main {
     public static void main(String args[]) {
         var list = new LinkedList();
-        System.out.println(list.indexOf(20));
+        list.addFirst(10);
+        list.addFirst(20);
+        list.addFirst(30);
+
     }
 }
