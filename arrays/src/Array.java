@@ -74,6 +74,26 @@ public class Array {
         items = newItems;
     }
 
+    public void insertAt (int item, int index) {
+        if(index < 0 || index > count)
+            throw new IllegalArgumentException();
+
+        if (items.length == count) {
+            int[] newItems = new int[count + 1];
+
+            for (int i = 0; i < count; i++)
+                newItems[i] = items[i];
+
+            items = newItems;
+        }
+
+        for(int i = count - 1; i >= index; i--)
+            items[i + 1] = items[i];
+
+        items[index] = item;
+        count++;
+    }
+
     public void print() {
         for(int i = 0; i < count; i++)
             System.out.println(items[i]);
