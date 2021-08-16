@@ -88,4 +88,17 @@ public class LinkedList {
         }
         return null;
     }
+
+    public int size() {
+        if (isEmpty()) return 0;
+        if (first == last) return 1;
+
+        var current = first;
+        var count = 0;
+        while(current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
 }
