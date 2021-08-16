@@ -17,4 +17,15 @@ public class Array {
         items[count] = value;
         count++;
     }
+
+    public void removeAt(int index) {
+        int[] arr = new int[items.length - 1];
+        for(int i = 0; i < index; i++) {
+            arr[i] = items[i];
+        }
+        for(int i = index; i < items.length - 1; i++) {
+            arr[i] = items[i + 1];
+        }
+        items = arr;
+    }
 }
