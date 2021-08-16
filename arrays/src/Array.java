@@ -7,6 +7,8 @@ public class Array {
     }
 
     public void insert(int item) {
+        // O(n)
+        // O(n) - space
         if (items.length == count) {
             int[] newItems = new int[count*2];
 
@@ -20,6 +22,7 @@ public class Array {
     }
 
     public void removeAt(int index) {
+        // O(n)
         if (index < 0 || index >= count)
             throw new IllegalArgumentException();
 
