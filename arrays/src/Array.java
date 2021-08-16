@@ -4,46 +4,44 @@ public class Array {
 
     public Array(int length){
         items = new int[length];
-        count = 0;
     }
 
-    public void print() {
-        for(int i = 0; i < items.length; i++) {
-            System.out.println(items[i]);
-        }
-    }
+    public void insert(int item) {
+        if (items.length == count) {
+            int[] newItems = new int[count*2];
 
-    public void insert(int value) {
-        if(count == items.length) {
-            int[] arr = new int[items.length + 1];
-            for(int i = 0; i < items.length; i++) {
-                arr[i] = items[i];
-            }
-            arr[count] = value;
-            items = arr;
-        } else {
-            items[count] = value;
+            for(int i = 0; i < count; i++)
+                newItems[i] = items[i];
+
+            items = newItems;
         }
-        count++;
+
+        items[count++] = item;
     }
 
     public void removeAt(int index) {
-        int[] arr = new int[items.length - 1];
-        for(int i = 0; i < index; i++) {
-            arr[i] = items[i];
-        }
-        for(int i = index; i < items.length - 1; i++) {
-            arr[i] = items[i + 1];
-        }
-        items = arr;
+        if (index < 0 || index >= count)
+            throw new IllegalArgumentException();
+
+        for(int i = index; i < count; i++)
+            items[i] = items[i+1];
+
+
+        count--;
     }
 
-    public int indexOf(int value) {
-        for(int i = 0; i < items.length; i++) {
-            if (items[i] == value) {
+    public int indexOf(int item) {
+        // O(n)
+        for(int i = 0; i < count; i++)
+            if(items[i] == item)
                 return i;
-            }
-        }
+
         return -1;
+    }
+
+    public void print() {
+        for(int i = 0; i < count; i++)
+            System.out.println(items[i]);
+
     }
 }
