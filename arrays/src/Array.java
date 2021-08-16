@@ -9,14 +9,7 @@ public class Array {
     public void insert(int item) {
         // O(n)
         // O(n) - space
-        if (items.length == count) {
-            int[] newItems = new int[count*2];
-
-            for(int i = 0; i < count; i++)
-                newItems[i] = items[i];
-
-            items = newItems;
-        }
+        resizeIfRequired();
 
         items[count++] = item;
     }
@@ -78,6 +71,16 @@ public class Array {
         if(index < 0 || index > count)
             throw new IllegalArgumentException();
 
+        resizeIfRequired();
+
+        for(int i = count - 1; i >= index; i--)
+            items[i + 1] = items[i];
+
+        items[index] = item;
+        count++;
+    }
+
+    private void resizeIfRequired() {
         if (items.length == count) {
             int[] newItems = new int[count + 1];
 
@@ -86,12 +89,6 @@ public class Array {
 
             items = newItems;
         }
-
-        for(int i = count - 1; i >= index; i--)
-            items[i + 1] = items[i];
-
-        items[index] = item;
-        count++;
     }
 
     public void print() {
