@@ -98,6 +98,7 @@ public class LinkedList {
         return null;
     }
 
+    // O(1)!
     public int size() {
         return size;
     }
