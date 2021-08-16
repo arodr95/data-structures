@@ -5,7 +5,11 @@ public class Main {
         numbers.insert(20);
         numbers.insert(30);
         numbers.insert(40);
-        System.out.println(numbers.indexOf(3));
         numbers.print();
+        System.out.println();
+        numbers.removeAt(2);
+        numbers.print();
+        System.out.println();
+        System.out.println(numbers.indexOf(20));
     }
 }
