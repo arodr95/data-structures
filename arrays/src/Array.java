@@ -14,7 +14,16 @@ public class Array {
     }
 
     public void insert(int value) {
-        items[count] = value;
+        if(count == items.length) {
+            int[] arr = new int[items.length + 1];
+            for(int i = 0; i < items.length; i++) {
+                arr[i] = items[i];
+            }
+            arr[count] = value;
+            items = arr;
+        } else {
+            items[count] = value;
+        }
         count++;
     }
 
