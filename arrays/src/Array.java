@@ -43,25 +43,35 @@ public class Array {
     }
 
     public int max() {
-        int max = -1;
-        for(int i = 0; i < count; i ++)
-            if(items[i] > max)
-                max = items[i];
+        // O(n)
+        int max = 0;
+
+        for(int item : items)
+            if(item > max)
+                max = item;
 
         return max;
     }
 
-    public int[] intersect(int[] items2) {
-        // O(n^2)
+    public Array intersect(Array other) {
+        // O(n)
         // O(n) - space
-        int[] intersect = new int[count];
+        var intersection = new Array(count);
 
-        for(int i = 0; i < count; i ++)
-            for(int j = 0; j < items2.length; i++)
-                if (items[i] == items2[j])
-                    intersect[i] = items[i];
+        for (int item : items)
+            if(other.indexOf(item) >= 0)
+                intersection.insert(item);
 
-        return intersect;
+        return intersection;
+    }
+
+    public void reverse() {
+        int [] newItems = new int[count];
+
+        for(int i = 0; i < count; i++)
+            newItems[i] = items[count - i - 1];
+
+        items = newItems;
     }
 
     public void print() {

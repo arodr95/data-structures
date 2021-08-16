@@ -5,11 +5,12 @@ public class Main {
         numbers.insert(20);
         numbers.insert(30);
         numbers.insert(40);
-        numbers.print();
-        System.out.println();
-        numbers.removeAt(2);
-        numbers.print();
-        System.out.println();
-        System.out.println(numbers.indexOf(20));
+        Array numbers2 = new Array(5);
+        numbers2.insert(20);
+        numbers2.insert(40);
+        numbers2.insert(60);
+        numbers2.insert(80);
+        numbers2.insert(100);
+        numbers.intersect(numbers2).print();
     }
 }
