@@ -42,6 +42,28 @@ public class Array {
         return -1;
     }
 
+    public int max() {
+        int max = -1;
+        for(int i = 0; i < count; i ++)
+            if(items[i] > max)
+                max = items[i];
+
+        return max;
+    }
+
+    public int[] intersect(int[] items2) {
+        // O(n^2)
+        // O(n) - space
+        int[] intersect = new int[count];
+
+        for(int i = 0; i < count; i ++)
+            for(int j = 0; j < items2.length; i++)
+                if (items[i] == items2[j])
+                    intersect[i] = items[i];
+
+        return intersect;
+    }
+
     public void print() {
         for(int i = 0; i < count; i++)
             System.out.println(items[i]);
