@@ -1,3 +1,4 @@
+import java.rmi.NoSuchObjectException;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
@@ -101,5 +102,20 @@ public class LinkedList {
     // O(1)!
     public int size() {
         return size;
+    }
+
+    public int[] toArray() {
+        if(isEmpty())
+            throw new NoSuchElementException();
+
+        var array = new int[size];
+        var current = first;
+        var index = 0;
+        while (current != null) {
+            array[index++] = current.value;
+            current = current.next;
+        }
+
+        return array;
     }
 }
