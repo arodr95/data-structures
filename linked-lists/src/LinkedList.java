@@ -156,4 +156,23 @@ public class LinkedList {
         }
         return a.value;
     }
+
+    public void printMiddle() {
+        if (isEmpty()) return;
+
+        var end = first;
+        var middle = first;
+        var length = 1;
+        while(end != last) {
+            end = end.next;
+            length++;
+            if (length % 2 == 1)
+                middle = middle.next;
+        }
+
+        if (length % 2 == 0)
+            System.out.printf("Middle: %d and %d", middle.value, (middle.next).value);
+        else
+            System.out.printf("Middle: %d", middle.value);
+    }
 }

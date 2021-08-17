@@ -8,7 +8,7 @@ public class Main {
 //        list.addLast(30);
 //        list.addLast(40);
 //        list.addLast(50);
-        var value = list.getKthFromTheEnd(1);
-        System.out.println(value);
+//        list.addLast(60);
+        list.printMiddle();
     }
 }
