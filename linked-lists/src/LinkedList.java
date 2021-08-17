@@ -105,8 +105,6 @@ public class LinkedList {
     }
 
     public int[] toArray() {
-        if(isEmpty())
-            throw new NoSuchElementException();
 
         var array = new int[size];
         var current = first;
@@ -120,8 +118,7 @@ public class LinkedList {
     }
 
     public void reverse() {
-        if(isEmpty())
-            throw new NoSuchElementException();
+        if(isEmpty()) return;
 
         var previous  = first;
         var current = first.next;
