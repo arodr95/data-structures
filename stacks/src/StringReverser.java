@@ -7,9 +7,9 @@ public class StringReverser {
         for(char ch : input.toCharArray())
             stack.push(ch);
 
-        var newString = "";
+        var reversed = "";
         while (!stack.empty())
-            newString += stack.pop().toString();
-        return newString;
+            reversed += stack.pop().toString();
+        return reversed;
     }
 }
