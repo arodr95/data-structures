@@ -1,4 +1,3 @@
-import java.rmi.NoSuchObjectException;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
