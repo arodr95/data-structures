@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        var string = "";
+        var string = "(>";
 
-        StringReverser reverser = new StringReverser();
-        var result = reverser.reverse(null);
+        Expression expression = new Expression(string);
+        var result = expression.isBalancedExpression();
         System.out.println(result);
     }
 }
