@@ -26,7 +26,6 @@ public class Expression {
                 if(!bracketsMatch(top, ch)) return false;
             }
         }
-
         return stack.empty();
     }
 
