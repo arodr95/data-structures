@@ -9,7 +9,7 @@ public class StringReverser {
 
         var reversed = "";
         while (!stack.empty())
-            reversed += stack.pop().toString();
+            reversed += stack.pop();
         return reversed;
     }
 }
