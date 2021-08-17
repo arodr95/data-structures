@@ -123,20 +123,17 @@ public class LinkedList {
         if(isEmpty())
             throw new NoSuchElementException();
 
-        var firstItem = first;
         var previous  = first;
-        var current = previous.next;
+        var current = first.next;
         while (current != null) {
-            if (previous == first)
-                previous.next = null;
             var next = current.next;
             current.next = previous;
             previous = current;
             current = next;
-            if(current == last) {
-                first = current;
-                last = firstItem;
-            }
         }
+
+        last = first;
+        last.next = null;
+        first = previous;
     }
 }
