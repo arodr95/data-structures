@@ -133,4 +133,28 @@ public class LinkedList {
         last.next = null;
         first = previous;
     }
+
+    public int getKthFromTheEnd(int k) {
+        if (isEmpty())
+            throw new IllegalStateException();
+//        if (k < 0 || k > size)
+//            throw new IllegalArgumentException();
+
+        var a = first;
+        var b = first;
+        var distance = 0;
+        while (distance < k) {
+            b = b.next;
+            distance++;
+            // if we don't know size, can throw error here
+            if (b == null)
+                throw new IllegalArgumentException();
+        }
+
+        while (b != last) {
+            a = a.next;
+            b = b.next;
+        }
+        return a.value;
+    }
 }
