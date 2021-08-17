@@ -158,7 +158,8 @@ public class LinkedList {
     }
 
     public void printMiddle() {
-        if (isEmpty()) return;
+        if (isEmpty())
+            throw new IllegalStateException();
 
         var end = first;
         var middle = first;
