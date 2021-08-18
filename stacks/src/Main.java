@@ -10,7 +10,7 @@ public class Main {
         var item = stack.peek();
 
         System.out.println(item);
-        System.out.println(stack.toString());
+        System.out.println(stack);
 
         var item2 = stack.pop();
         var item3 = stack.pop();
@@ -19,7 +19,7 @@ public class Main {
         System.out.println(item2);
         System.out.println(item3);
         System.out.println(item4);
-        System.out.println(stack.toString());
+        System.out.println(stack);
 
         stack.push(10);
         stack.push(20);
@@ -29,11 +29,11 @@ public class Main {
         stack.push(60);
 
         while(!stack.isEmpty()){
-            System.out.println(stack.toString());
+            System.out.println(stack);
             System.out.println(stack.pop());
         }
 
-        System.out.println(stack.toString());
+        System.out.println(stack);
 
     }
 }
