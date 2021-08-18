@@ -36,6 +36,29 @@ public class ArrayStack {
         count++;
     }
 
+    public int pop() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        count--;
+        var top = stack[count];
+
+        var newStack = new int[count];
+        for (int i = 0; i < newStack.length; i++)
+            newStack[i] = stack[i];
+        stack = newStack;
+
+        return top;
+    }
+
+    public int peek() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        return stack[count - 1];
+    }
+
+    @Override
     public String toString() {
         return Arrays.toString(stack);
     }
