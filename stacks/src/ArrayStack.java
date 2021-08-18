@@ -9,12 +9,12 @@ public class ArrayStack {
         count = 0;
     }
 
-    private boolean isFull() {
-        return count == items.length;
-    }
-
     public boolean isEmpty() {
         return count == 0;
+    }
+
+    private boolean isFull() {
+        return count == items.length;
     }
 
     public void push(int item) {
