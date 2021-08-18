@@ -18,7 +18,7 @@ public class ArrayStack {
     }
 
     public void push(int item) {
-        if(isFull() || isEmpty()) {
+        if(isFull()) {
             increaseSize();
         }
 
@@ -29,14 +29,7 @@ public class ArrayStack {
         if (isEmpty())
             throw new IllegalStateException();
 
-        var top = items[--count];
-
-        var newStack = new int[count];
-        for (int i = 0; i < newStack.length; i++)
-            newStack[i] = items[i];
-        items = newStack;
-
-        return top;
+        return items[--count];
     }
 
     public int peek() {
@@ -48,7 +41,8 @@ public class ArrayStack {
 
     @Override
     public String toString() {
-        return Arrays.toString(items);
+        var stack = Arrays.copyOfRange(items, 0, count);
+        return Arrays.toString(stack);
     }
 
     private void increaseSize() {
