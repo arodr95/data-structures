@@ -10,7 +10,7 @@ public class ArrayStack {
     }
 
     private boolean isFull() {
-        return count >= stack.length;
+        return count == stack.length;
     }
 
     public boolean isEmpty() {
