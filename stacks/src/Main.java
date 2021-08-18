@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedListStack stack = new LinkedListStack();
+        ArrayStack stack = new ArrayStack(3);
         stack.push(10);
         stack.push(20);
         stack.push(30);

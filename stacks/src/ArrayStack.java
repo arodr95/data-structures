@@ -6,7 +6,6 @@ public class ArrayStack {
 
     public ArrayStack(int size) {
         items = new int[size];
-        count = 0;
     }
 
     public boolean isEmpty() {
