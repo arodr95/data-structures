@@ -44,14 +44,4 @@ public class ArrayStack {
         var stack = Arrays.copyOfRange(items, 0, count);
         return Arrays.toString(stack);
     }
-
-    private void increaseSize() {
-        var newStack = new int [count + 1];
-        var index = 0;
-        for(int item : items) {
-            newStack[index] = item;
-            index++;
-        }
-        items = newStack;
-    }
 }
