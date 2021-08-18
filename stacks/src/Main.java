@@ -1,9 +1,10 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        var string = "(>";
+        ArrayStack stack = new ArrayStack();
+        stack.push(10);
 
-        Expression expression = new Expression(string);
-        var result = expression.isBalancedExpression();
-        System.out.println(result);
+        System.out.println(stack.toString());
     }
 }
