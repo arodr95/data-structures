@@ -3,11 +3,15 @@ import java.util.Stack;
 
 public class TwoStacks {
     private int[] items;
+    private int size;
     private int index1;
     private int index2;
 
     public TwoStacks(int size) {
         items = new int[size];
+        this.size = size;
+        index2 = size - 1;
+        index1 = 0;
     }
 
     public boolean isEmpty1() {
@@ -15,18 +19,17 @@ public class TwoStacks {
     }
 
     public boolean isEmpty2() {
-        return index2 == index1;
+        return index2 == size - 1;
     }
 
     private boolean isFull() {
-        return index2 > items.length;
+        return index1 > index2;
     }
 
-    public void push1(int item){
+    public void push1(int item) {
         if (isFull())
             throw new StackOverflowError();
 
-        shiftStack2Right();
         items[index1++] = item;
     }
 
@@ -34,16 +37,16 @@ public class TwoStacks {
         if (isFull())
             throw new StackOverflowError();
 
-        items[index2++] = item;
+        items[index2--] = item;
     }
 
     public int pop1() {
         if (isEmpty1())
             throw new IllegalStateException();
 
-        var item = items[index1 - 1];
         index1--;
-        shiftStack2Left();
+        var item = items[index1];
+        items[index1] = 0;
         return item;
     }
 
@@ -51,27 +54,14 @@ public class TwoStacks {
         if (isEmpty2())
             throw new IllegalStateException();
 
-        var item = items[index2 - 1];
-        index2--;
+        index2++;
+        var item = items[index2];
+        items[index2] = 0;
         return item;
     }
 
     @Override
     public String toString() {
-        var stack1 = Arrays.copyOfRange(items, 0, index1);
-        var stack2 = Arrays.copyOfRange(items, index1, index2);
-        return Arrays.toString(stack1) + Arrays.toString(stack2);
-    }
-
-    private void shiftStack2Right() {
-        for(int i = index2; i > index1; i--)
-            items[i] = items[i - 1];
-        index2++;
-    }
-
-    private void shiftStack2Left() {
-        index2--;
-        for(int i = index1; i < index2; i++)
-            items[i] = items[i+1];
+        return Arrays.toString(items);
     }
 }
