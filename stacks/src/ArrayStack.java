@@ -39,8 +39,7 @@ public class ArrayStack {
         if (isEmpty())
             throw new IllegalStateException();
 
-        count--;
-        var top = stack[count];
+        var top = stack[--count];
 
         var newStack = new int[count];
         for (int i = 0; i < newStack.length; i++)
