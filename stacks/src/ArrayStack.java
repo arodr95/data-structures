@@ -4,8 +4,8 @@ public class ArrayStack {
     private int[] items;
     private int count;
 
-    public ArrayStack() {
-        items = new int[0];
+    public ArrayStack(int size) {
+        items = new int[size];
         count = 0;
     }
 
@@ -19,7 +19,7 @@ public class ArrayStack {
 
     public void push(int item) {
         if(isFull()) {
-            increaseSize();
+            throw new StackOverflowError();
         }
 
         items[count++] = item;
