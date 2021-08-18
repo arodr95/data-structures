@@ -32,8 +32,7 @@ public class ArrayStack {
             increaseSize();
         }
 
-        stack[count] = item;
-        count++;
+        stack[count++] = item;
     }
 
     public int pop() {
