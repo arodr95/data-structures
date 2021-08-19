@@ -23,8 +23,6 @@ public class ArrayQueue {
         if (isFull())
             throw new StackOverflowError();
 
-
-
         queue[tail++] = item;
     }
 
