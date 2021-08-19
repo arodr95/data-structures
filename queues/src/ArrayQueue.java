@@ -30,6 +30,7 @@ public class ArrayQueue {
         if (isEmpty())
             throw new IllegalStateException();
 
+        count--;
         return queue[head++];
     }
 
