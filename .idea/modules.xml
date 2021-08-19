@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/data-structures.iml" filepath="$PROJECT_DIR$/.idea/data-structures.iml" />
       <module fileurl="file://$PROJECT_DIR$/dynamic-arrays/dynamic-arrays.iml" filepath="$PROJECT_DIR$/dynamic-arrays/dynamic-arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/linked-lists/linked-lists.iml" filepath="$PROJECT_DIR$/linked-lists/linked-lists.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stacks/stacks.iml" filepath="$PROJECT_DIR$/stacks/stacks.iml" />
     </modules>
   </component>
 </project>
