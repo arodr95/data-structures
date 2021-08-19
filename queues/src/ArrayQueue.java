@@ -22,16 +22,21 @@ public class ArrayQueue {
         if (isFull())
             throw new StackOverflowError();
 
-        queue[tail++] = item;
+        queue[tail] = item;
         count++;
+        tail = (tail + 1) % queue.length;
     }
 
     public int dequeue() {
         if (isEmpty())
             throw new IllegalStateException();
 
+        var item = queue[head];
+        queue[head] = 0;
         count--;
-        return queue[head++];
+        head = (head + 1) % queue.length;
+
+        return item;
     }
 
     public int peek() {
@@ -43,7 +48,6 @@ public class ArrayQueue {
 
     @Override
     public String toString() {
-        var items = Arrays.copyOfRange(queue, head, tail);
-        return Arrays.toString(items);
+        return Arrays.toString(queue);
     }
 }
