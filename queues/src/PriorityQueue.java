@@ -16,39 +16,40 @@ public class PriorityQueue {
         if (isFull())
             increaseSize();
 
-        for(int i = count; i >= 0; i--){
-            if(i == 0)
-                items[i] = item;
-            else if (items[i - 1] < item) {
-                items[i] = item;
-                break;
-            } else if(items[i - 1] > item)
-                items[i] = items[i - 1];
-        }
+        var i = shiftItemsToInsert(item);
+        items[i] = item;
         count++;
     }
 
     public int remove() {
-        var item = items[0];
-        count--;
+        if (isEmpty())
+            throw new IllegalStateException();
 
-        var newItems = Arrays.copyOfRange(items, 1, count + 1);
-        items = newItems;
-
-        return item;
+        return items[--count];
     }
 
     public int peek() {
-        return items[0];
-    }
-
-    public void increaseSize() {
-        var newItems = Arrays.copyOf(items, count * 2);
-        items = newItems;
+        return items[count - 1];
     }
 
     @Override
     public String toString() {
         return Arrays.toString(Arrays.copyOfRange(items, 0, count));
+    }
+
+    private void increaseSize() {
+        var newItems = Arrays.copyOf(items, count + 1);
+        items = newItems;
+    }
+
+    private int shiftItemsToInsert(int item) {
+        int i;
+        for(i = count - 1; i >= 0; i--){
+            if(items[i] > item)
+                items[i + 1] = items[i];
+            else
+                break;
+        }
+        return ++i;
     }
 }
