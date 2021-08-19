@@ -36,6 +36,9 @@ public class ArrayQueue {
     }
 
     public int peek() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
         return queue[head];
     }
 
