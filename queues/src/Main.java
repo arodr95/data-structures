@@ -1,20 +1,17 @@
+import java.io.PipedWriter;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
     public static void main(String args[]) {
-        LinkedListQueue queue = new LinkedListQueue();
+        PriorityQueue pq = new PriorityQueue(3);
 
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
+        pq.enqueue(3);
+        pq.enqueue(1);
+        pq.enqueue(2);
+        System.out.println(pq);
 
-        while(!queue.isEmpty()){
-            System.out.println(queue);
-            System.out.println("top is " + queue.peek());
-            System.out.println("removing (" + queue.dequeue() + ") ...");
-        }
     }
 
     public static void reverse(Queue<Integer> queue) {
