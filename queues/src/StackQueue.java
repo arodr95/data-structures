@@ -18,12 +18,12 @@ public class StackQueue {
     }
 
     public int dequeue() {
+        if (stack1.isEmpty() && stack2.isEmpty())
+            throw new IllegalStateException();
+
         if (stack2.isEmpty())
             while(!stack1.isEmpty())
                 stack2.push(stack1.pop());
-
-        if(stack2.isEmpty())
-            throw new IllegalStateException();
 
         return stack2.pop();
     }
