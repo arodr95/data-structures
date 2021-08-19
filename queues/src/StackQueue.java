@@ -21,9 +21,7 @@ public class StackQueue {
         if (isEmpty())
             throw new IllegalStateException();
 
-        if (stack2.isEmpty())
-            while(!stack1.isEmpty())
-                stack2.push(stack1.pop());
+        moveStack1toStack2();
 
         return stack2.pop();
     }
@@ -32,9 +30,7 @@ public class StackQueue {
         if (isEmpty())
             throw new IllegalStateException();
 
-        if (stack2.isEmpty())
-            while(!stack1.isEmpty())
-                stack2.push(stack1.pop());
+        moveStack1toStack2();
 
         return stack2.peek();
     }
@@ -44,5 +40,11 @@ public class StackQueue {
         while(!stack2.isEmpty())
             stack1.push(stack2.pop());
         return stack1.toString();
+    }
+
+    private void moveStack1toStack2() {
+        if (stack2.isEmpty())
+            while (!stack1.isEmpty())
+                stack2.push(stack1.pop());
     }
 }
