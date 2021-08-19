@@ -14,15 +14,13 @@ public class StackQueue {
     }
 
     public void enqueue(int item) {
-        while(!stack2.isEmpty())
-            stack1.push(stack2.pop());
-
         stack1.push(item);
     }
 
     public int dequeue() {
-        while(!stack1.isEmpty())
-            stack2.push(stack1.pop());
+        if (stack2.isEmpty())
+            while(!stack1.isEmpty())
+                stack2.push(stack1.pop());
 
         return stack2.pop();
     }
