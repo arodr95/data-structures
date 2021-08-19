@@ -1,12 +1,8 @@
 import java.util.Arrays;
 
 public class PriorityQueue {
-    private int[] items;
+    private int[] items = new int[1];
     private int count;
-
-    public PriorityQueue(int capacity) {
-        items = new int[capacity];
-    }
 
     public boolean isEmpty() {
         return count == 0;
@@ -16,38 +12,43 @@ public class PriorityQueue {
         return count == items.length;
     }
 
-    private boolean isMax(int item) {
-        return item > items[count - 1];
-    }
-
-    public void enqueue(int item) {
+    public void add(int item) {
         if (isFull())
-            throw new StackOverflowError();
+            increaseSize();
 
-        if(isEmpty() || isMax(item))
-            items[count++] = item;
-        else {
-            for (int i = items.length - 2; i >= 0; i--) {
-                items[i + 1] = items[i];
-                if (item < items[i]) {
-                    items[i] = item;
-                    break;
-                }            }
-            count++;
+        for(int i = count; i >= 0; i--){
+            if(i == 0)
+                items[i] = item;
+            else if (items[i - 1] < item) {
+                items[i] = item;
+                break;
+            } else if(items[i - 1] > item)
+                items[i] = items[i - 1];
         }
+        count++;
     }
 
-    public int dequeue() {
+    public int remove() {
         var item = items[0];
+        count--;
 
-        for (int i = 0; i < items.length; i++)
-            items[i] = items[i+1];
+        var newItems = Arrays.copyOfRange(items, 1, count + 1);
+        items = newItems;
 
         return item;
     }
 
+    public int peek() {
+        return items[0];
+    }
+
+    public void increaseSize() {
+        var newItems = Arrays.copyOf(items, count * 2);
+        items = newItems;
+    }
+
     @Override
     public String toString() {
-        return Arrays.toString(items);
+        return Arrays.toString(Arrays.copyOfRange(items, 0, count));
     }
 }
