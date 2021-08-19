@@ -8,8 +8,6 @@ public class ArrayQueue {
 
     public ArrayQueue(int size) {
         queue = new int[size];
-        head = 0;
-        tail = 0;
     }
 
     public boolean isFull() {
@@ -17,7 +15,7 @@ public class ArrayQueue {
     }
 
     public boolean isEmpty() {
-        return head == tail;
+        return count == 0;
     }
 
     public void enqueue(int item) {
