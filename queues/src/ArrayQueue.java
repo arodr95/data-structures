@@ -4,6 +4,7 @@ public class ArrayQueue {
     private int[] queue;
     private int head;
     private int tail;
+    private int count;
 
     public ArrayQueue(int size) {
         queue = new int[size];
@@ -12,7 +13,7 @@ public class ArrayQueue {
     }
 
     public boolean isFull() {
-        return tail == queue.length;
+        return count == queue.length;
     }
 
     public boolean isEmpty() {
@@ -24,6 +25,7 @@ public class ArrayQueue {
             throw new StackOverflowError();
 
         queue[tail++] = item;
+        count++;
     }
 
     public int dequeue() {
