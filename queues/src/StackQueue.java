@@ -18,7 +18,7 @@ public class StackQueue {
     }
 
     public int dequeue() {
-        if (stack1.isEmpty() && stack2.isEmpty())
+        if (isEmpty())
             throw new IllegalStateException();
 
         if (stack2.isEmpty())
@@ -29,8 +29,12 @@ public class StackQueue {
     }
 
     public int peek() {
-        while(!stack1.isEmpty())
-            stack2.push(stack1.pop());
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        if (stack2.isEmpty())
+            while(!stack1.isEmpty())
+                stack2.push(stack1.pop());
 
         return stack2.peek();
     }
