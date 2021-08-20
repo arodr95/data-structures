@@ -4,6 +4,7 @@ import java.util.Queue;
 public class StackWithTwoQueues {
     Queue<Integer> queue1 = new ArrayDeque();
     Queue<Integer> queue2 = new ArrayDeque();
+    private int top;
 
     // O(1)
     public boolean isEmpty() {
@@ -18,22 +19,28 @@ public class StackWithTwoQueues {
     // O(1)
     public void push(int item) {
         queue1.add(item);
+        top = item;
     }
 
     // O(n)
     public int pop() {
-        if (queue1.isEmpty())
+        if (isEmpty())
             throw new IllegalStateException();
 
         while(queue1.size() > 1) {
-            queue2.add(queue1.remove());
+            top = queue1.remove();
+            queue2.add(top);
         }
 
-        var item = queue1.remove();
-        queue1 = queue2;
-        queue2 = new ArrayDeque<>();
+        swapQueues();
 
-        return item;
+        return queue2.remove();
+    }
+
+    private void swapQueues() {
+        var temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
     }
 
     // O(n)
@@ -41,16 +48,7 @@ public class StackWithTwoQueues {
         if (queue1.isEmpty())
             throw new IllegalStateException();
 
-        while(queue1.size() > 1) {
-            queue2.add(queue1.remove());
-        }
-
-        var item = queue1.remove();
-        queue2.add(item);
-        queue1 = queue2;
-        queue2 = new ArrayDeque<>();
-
-        return item;
+        return top;
     }
 
     @Override
