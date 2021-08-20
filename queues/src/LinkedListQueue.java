@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class LinkedListQueue {
-    // isEmpty, enqueue, dequeue, peek
     private LinkedList<Integer> items;
 
     public LinkedListQueue() {
