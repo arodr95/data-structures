@@ -1,23 +1,23 @@
 import java.io.PipedWriter;
+import java.sql.SQLOutput;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
     public static void main(String args[]) {
-        PriorityQueue pq = new PriorityQueue();
+        QueueReverser queue = new QueueReverser();
 
-        pq.add(5);
-        pq.add(2);
-        pq.add(3);
-        pq.add(6);
-        pq.add(4);
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+        queue.add(40);
+        queue.add(50);
 
-        while(!pq.isEmpty()) {
-            System.out.println(pq);
-            System.out.println("top is " + pq.peek());
-            System.out.println("removing (" + pq.remove() + ") ...");
-        }
+        queue.reverse(3);
+
+        System.out.println(queue);
+
     }
 
     public static void reverse(Queue<Integer> queue) {
