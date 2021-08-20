@@ -6,16 +6,19 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String args[]) {
-        LinkedListQueue queue = new LinkedListQueue();
+        StackWithTwoQueues stack = new StackWithTwoQueues();
 
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        queue.dequeue();
-        queue.dequeue();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
 
+        while(!stack.isEmpty()) {
+            System.out.println(stack);
+            System.out.println("top is " + stack.peek() + "");
+            System.out.println("removing (" + stack.pop() + ") ...");
+        }
 
-        System.out.println(queue);
+        System.out.println(stack);
     }
 
     public static void reverse(Queue<Integer> queue) {
