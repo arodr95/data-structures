@@ -2,16 +2,21 @@ import java.util.*;
 
 public class Main {
     public static void main(String args[]) {
-        CharFinder finder = new CharFinder();
+        HashTable table = new HashTable(5);
 
-        var str1 = "a green apple";
-        var ch1 = finder.findFirstNonRepeatedChar(str1);
-        System.out.println("string: " + str1);
-        System.out.println("first non-repeated character is '" + ch1 + "'");
+        table.put(0, "Andrew");
+        table.put(1, "Mosh");
+        table.put(5, "Colton");
+        System.out.println(table);
+        System.out.println(table.get(0));
+        System.out.println(table.get(1));
+        System.out.println(table.get(5));
 
-        var str2 = "green apple";
-        var ch2 = finder.findFirstRepeatedChar(str2);
-        System.out.println("string: " + str2);
-        System.out.println("first repeated character is '" + ch2 + "'");
+        table.remove(0);
+        System.out.println(table);
+        table.remove(1);
+        System.out.println(table);
+        table.remove(5);
+        System.out.println(table);
     }
 }
