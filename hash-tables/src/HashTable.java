@@ -28,38 +28,38 @@ public class HashTable {
         if (!isUniqueKey(key))
             throw new IllegalArgumentException();
 
-        var hashVal = hash(key);
-        if(listIsEmptyAt(hashVal))
-            entries[hashVal] = new LinkedList<>();
+        var index = hash(key);
+        if(entriesIsEmptyAt(index))
+            entries[index] = new LinkedList<>();
 
-        entries[hashVal].addLast(new Entry(key, value));
+        entries[index].addLast(new Entry(key, value));
     }
 
     private int hash(int key) {
         return key % entries.length;
     }
 
-    private boolean listIsEmptyAt(int hashVal) {
-        return entries[hashVal] == null;
+    private boolean entriesIsEmptyAt(int index) {
+        return entries[index] == null;
     }
 
     private boolean isUniqueKey(int key) {
-        var hashVal = hash(key);
-        if (listIsEmptyAt(hashVal))
+        var index = hash(key);
+        if (entriesIsEmptyAt(index))
             return true;
 
-        for (Entry e : entries[hashVal])
+        for (Entry e : entries[index])
             if(e.key == key)
                 return false;
         return true;
     }
 
     public String get(int key) {
-        var hashVal = hash(key);
-        if (listIsEmptyAt(hashVal))
+        var index = hash(key);
+        if (entriesIsEmptyAt(index))
             throw new IllegalArgumentException();
 
-        for(Entry e : entries[hashVal])
+        for(Entry e : entries[index])
             if (e.key == key)
                 return e.value;
 
@@ -67,11 +67,11 @@ public class HashTable {
     }
 
     public void remove(int key) {
-        var hashVal = hash(key);
-        if (listIsEmptyAt(hashVal))
+        var index = hash(key);
+        if (entriesIsEmptyAt(index))
             return;
 
-        entries[hashVal].removeIf(e -> e.key == key);
+        entries[index].removeIf(e -> e.key == key);
     }
 
     @Override
