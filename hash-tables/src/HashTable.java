@@ -18,14 +18,14 @@ public class HashTable {
         }
     }
 
-    private LinkedList<Entry>[] table;
+    private LinkedList<Entry>[] entries;
 
     public HashTable(int capacity) {
-        table = new LinkedList[capacity];
+        entries = new LinkedList[capacity];
     }
 
     public int hash(int key) {
-        return key % table.length;
+        return key % entries.length;
     }
 
     public void put(int key, String value) {
@@ -34,13 +34,13 @@ public class HashTable {
 
         var hashVal = hash(key);
         if(listIsEmptyAt(hashVal))
-            table[hashVal] = new LinkedList<>();
+            entries[hashVal] = new LinkedList<>();
 
-        table[hashVal].addLast(new Entry(key, value));
+        entries[hashVal].addLast(new Entry(key, value));
     }
 
     private boolean listIsEmptyAt(int hashVal) {
-        return table[hashVal] == null;
+        return entries[hashVal] == null;
     }
 
     private boolean isUniqueKey(int key) {
@@ -48,7 +48,7 @@ public class HashTable {
         if (listIsEmptyAt(hashVal))
             return true;
 
-        for (Entry e : table[hashVal])
+        for (Entry e : entries[hashVal])
             if(e.key == key)
                 return false;
         return true;
@@ -59,7 +59,7 @@ public class HashTable {
         if (listIsEmptyAt(hashVal))
             throw new IllegalArgumentException();
 
-        for(Entry e : table[hashVal])
+        for(Entry e : entries[hashVal])
             if (e.key == key)
                 return e.value;
 
@@ -71,11 +71,11 @@ public class HashTable {
         if (listIsEmptyAt(hashVal))
             return;
 
-        table[hashVal].removeIf(e -> e.key == key);
+        entries[hashVal].removeIf(e -> e.key == key);
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(table);
+        return Arrays.toString(entries);
     }
 }
