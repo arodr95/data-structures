@@ -7,6 +7,7 @@ public class Main {
         table.put(0, "Andrew");
         table.put(1, "Mosh");
         table.put(5, "Colton");
+        table.put(1, "Jenn");
         System.out.println(table);
         System.out.println(table.get(0));
         System.out.println(table.get(1));

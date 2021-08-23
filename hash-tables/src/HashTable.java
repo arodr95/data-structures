@@ -25,14 +25,17 @@ public class HashTable {
     }
 
     public void put(int key, String value) {
-        if (!isUniqueKey(key))
-            throw new IllegalArgumentException();
-
         var index = hash(key);
         if(entriesIsEmptyAt(index))
             entries[index] = new LinkedList<>();
 
-        entries[index].addLast(new Entry(key, value));
+        var entry = new Entry(key, value);
+        for (Entry e : entries[index])
+           if (e.key == key) {
+               e.value = value;
+               return;
+           }
+        entries[index].addLast(entry);
     }
 
     private int hash(int key) {
