@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 
 public class HashTable {
     private class Entry {
@@ -25,49 +24,59 @@ public class HashTable {
     }
 
     public void put(int key, String value) {
+        var entry = getEntry(key);
+        if (entry != null) {
+            entry.value = value;
+            return;
+        }
+
+        getOrCreateBucket(key).addLast(new Entry(key, value));
+    }
+
+    public String get(int key) {
+        var entry = getEntry(key);
+        return entry == null ? null : entry.value;
+    }
+
+    public void remove(int key) {
+        var entry = getEntry(key);
+        if (entry == null)
+            throw new IllegalStateException();
+        getBucket(key).remove(entry);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(entries);
+    }
+
+    private LinkedList<Entry> getBucket(int key) {
+        return entries[hash(key)];
+    }
+
+    private LinkedList<Entry> getOrCreateBucket(int key) {
         var index = hash(key);
-        if(entriesIsEmptyAt(index))
+        if (entries[index] == null)
             entries[index] = new LinkedList<>();
 
-        var entry = new Entry(key, value);
-        for (Entry e : entries[index])
-           if (e.key == key) {
-               e.value = value;
-               return;
-           }
-        entries[index].addLast(entry);
+        return entries[index];
+    }
+
+    private Entry getEntry(int key) {
+        var index = hash(key);
+        var bucket = entries[index];
+        if (bucket != null)
+            for (var entry : bucket)
+                if (entry.key == key)
+                    return entry;
+        return null;
     }
 
     private int hash(int key) {
         return key % entries.length;
     }
 
-    private boolean entriesIsEmptyAt(int index) {
+    private boolean bucketIsEmptyAt(int index){
         return entries[index] == null;
-    }
-
-    public String get(int key) {
-        var index = hash(key);
-        if (entriesIsEmptyAt(index))
-            throw new IllegalArgumentException();
-
-        for(Entry e : entries[index])
-            if (e.key == key)
-                return e.value;
-
-        throw new NoSuchElementException();
-    }
-
-    public void remove(int key) {
-        var index = hash(key);
-        if (entriesIsEmptyAt(index))
-            return;
-
-        entries[index].removeIf(e -> e.key == key);
-    }
-
-    @Override
-    public String toString() {
-        return Arrays.toString(entries);
     }
 }

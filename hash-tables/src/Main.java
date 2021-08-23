@@ -19,5 +19,6 @@ public class Main {
         System.out.println(table);
         table.remove(5);
         System.out.println(table);
+        table.get(6);
     }
 }
