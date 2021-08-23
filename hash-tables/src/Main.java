@@ -1,28 +1,17 @@
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String args[]) {
-        var string = "a green apple";
-        var ch = findFirstNonRepeatedChar(string);
-        System.out.println(ch);
-    }
+        CharFinder finder = new CharFinder();
 
-    // O(n)
-    public static char findFirstNonRepeatedChar(String str){
-        Map<Character, Integer> map = new HashMap<>();
+        var str1 = "a green apple";
+        var ch1 = finder.findFirstNonRepeatedChar(str1);
+        System.out.println("string: " + str1);
+        System.out.println("first non-repeated character is '" + ch1 + "'");
 
-        var chars = str.toCharArray();
-        for(char ch : chars) {
-            var count = map.containsKey(ch) ? map.get(ch) : 0;
-            map.put(ch, count + 1);
-        }
-
-        for(var ch : chars)
-            if(map.get(ch) == 1)
-                return ch;
-
-        return Character.MIN_VALUE;
+        var str2 = "green apple";
+        var ch2 = finder.findFirstRepeatedChar(str2);
+        System.out.println("string: " + str2);
+        System.out.println("first repeated character is '" + ch2 + "'");
     }
 }
