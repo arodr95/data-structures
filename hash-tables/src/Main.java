@@ -4,27 +4,25 @@ import java.util.Map;
 
 public class Main {
     public static void main(String args[]) {
-        // a green apple
-
         var string = "a green apple";
-
-        System.out.println(findFirstNonRepeatedCharacter(string));
+        var ch = findFirstNonRepeatedChar(string);
+        System.out.println(ch);
     }
 
-    public static char findFirstNonRepeatedCharacter(String string){
-        var array = string.toLowerCase().toCharArray();
-        Map<Character, Boolean> map = new HashMap<>();
+    // O(n)
+    public static char findFirstNonRepeatedChar(String str){
+        Map<Character, Integer> map = new HashMap<>();
 
-
-        for(char character : array) {
-            if (map.containsKey(character)){
-                map.put(character,true);
-                return character;
-            } else {
-                map.put(character, false);
-            }
+        var chars = str.toCharArray();
+        for(char ch : chars) {
+            var count = map.containsKey(ch) ? map.get(ch) : 0;
+            map.put(ch, count + 1);
         }
 
-        return '0';
+        for(var ch : chars)
+            if(map.get(ch) == 1)
+                return ch;
+
+        return Character.MIN_VALUE;
     }
 }
