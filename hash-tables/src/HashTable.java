@@ -24,10 +24,6 @@ public class HashTable {
         entries = new LinkedList[capacity];
     }
 
-    public int hash(int key) {
-        return key % entries.length;
-    }
-
     public void put(int key, String value) {
         if (!isUniqueKey(key))
             throw new IllegalArgumentException();
@@ -37,6 +33,10 @@ public class HashTable {
             entries[hashVal] = new LinkedList<>();
 
         entries[hashVal].addLast(new Entry(key, value));
+    }
+
+    private int hash(int key) {
+        return key % entries.length;
     }
 
     private boolean listIsEmptyAt(int hashVal) {
