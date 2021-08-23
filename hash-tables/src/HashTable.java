@@ -46,17 +46,6 @@ public class HashTable {
         return entries[index] == null;
     }
 
-    private boolean isUniqueKey(int key) {
-        var index = hash(key);
-        if (entriesIsEmptyAt(index))
-            return true;
-
-        for (Entry e : entries[index])
-            if(e.key == key)
-                return false;
-        return true;
-    }
-
     public String get(int key) {
         var index = hash(key);
         if (entriesIsEmptyAt(index))
