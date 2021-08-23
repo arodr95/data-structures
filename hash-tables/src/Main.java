@@ -2,23 +2,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String args[]) {
-        HashTable table = new HashTable(5);
+        HashTableExercises exercises = new HashTableExercises();
+        int[] items = new int[] {1, 2, 2, 2, 2, 3, 3, 3, 4};
+        System.out.println(exercises.mostFrequent(items));
 
-        table.put(0, "Andrew");
-        table.put(1, "Mosh");
-        table.put(5, "Colton");
-        table.put(1, "Jenn");
-        System.out.println(table);
-        System.out.println(table.get(0));
-        System.out.println(table.get(1));
-        System.out.println(table.get(5));
-
-        table.remove(0);
-        System.out.println(table);
-        table.remove(1);
-        System.out.println(table);
-        table.remove(5);
-        System.out.println(table);
-        table.get(6);
     }
 }
