@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class HashTableExercises {
 
@@ -28,5 +30,18 @@ public class HashTableExercises {
             var count = map.containsKey(item) ? map.get(item) : 0;
             map.put(item, count + 1);
         }
+    }
+
+    public int countPairsWithDiff(int[] items, int k){
+        Set<Integer> set = new HashSet<>();
+        for(var item : items)
+            set.add(item);
+
+        var count = 0;
+        for(var num : set)
+            if(set.contains(num + k))
+                count++;
+
+        return count;
     }
 }
