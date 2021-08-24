@@ -32,15 +32,20 @@ public class HashTableExercises {
         }
     }
 
-    public int countPairsWithDiff(int[] items, int k){
+    // O(n)
+    public int countPairsWithDiff(int[] items, int difference){
         Set<Integer> set = new HashSet<>();
         for(var item : items)
             set.add(item);
 
         var count = 0;
-        for(var num : set)
-            if(set.contains(num + k))
+        for(var num : set) {
+            if (set.contains(num + difference))
                 count++;
+            if (set.contains(num - difference))
+                count++;
+            set.remove(num);
+        }
 
         return count;
     }
