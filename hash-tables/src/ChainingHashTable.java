@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class HashTable {
+public class ChainingHashTable {
     private class Entry {
         private int key;
         private String value;
@@ -19,7 +19,7 @@ public class HashTable {
 
     private LinkedList<Entry>[] entries;
 
-    public HashTable(int capacity) {
+    public ChainingHashTable(int capacity) {
         entries = new LinkedList[capacity];
     }
 
