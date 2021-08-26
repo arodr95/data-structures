@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/arrays/arrays.iml" filepath="$PROJECT_DIR$/arrays/arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/binary-trees/binary-trees.iml" filepath="$PROJECT_DIR$/binary-trees/binary-trees.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/data-structures.iml" filepath="$PROJECT_DIR$/.idea/data-structures.iml" />
       <module fileurl="file://$PROJECT_DIR$/dynamic-arrays/dynamic-arrays.iml" filepath="$PROJECT_DIR$/dynamic-arrays/dynamic-arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/hash-tables/hash-tables.iml" filepath="$PROJECT_DIR$/hash-tables/hash-tables.iml" />
