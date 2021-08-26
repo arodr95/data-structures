@@ -1,7 +1,5 @@
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class LinearHashMap {
     private class Entry {
@@ -16,23 +14,19 @@ public class LinearHashMap {
 
     private Entry[] items;
     private int count;
-    private Map<Integer, Integer> keys = new HashMap();
+    private Map<Integer, Integer> indexes = new HashMap();
 
     public LinearHashMap(int capacity) {
         items = new Entry[capacity];
     }
 
-    // put(int, String)
-    // get(int) -> string
-    // remove(int)
-    // size()
-
-    private int hash(int key) {
-        return key % items.length;
+    public int size() {
+        return count;
     }
 
+    // O(n)
     public void put(int key, String value) {
-        if (keys.containsKey(key))
+        if (indexes.containsKey(key))
             throw new IllegalArgumentException("Key already exists.");
 
         var index = hash(key);
@@ -47,13 +41,34 @@ public class LinearHashMap {
         throw new IllegalStateException("Map is at capacity.");
     }
 
-    public void get(int key) {
+    // O(1)
+    public Entry get(int key) {
+        if (!indexes.containsKey(key))
+            throw new IllegalArgumentException("Key does not exist.");
 
+        var index = indexes.get(key);
+        return items[index];
+    }
+
+    // O(1)
+    public Entry remove(int key) {
+        if (!indexes.containsKey(key))
+            throw new IllegalArgumentException("Key does not exist.");
+
+        var index = indexes.get(key);
+        var item = items[index];
+        items[index] = null;
+        count--;
+        return item;
+    }
+
+    private int hash(int key) {
+        return key % items.length;
     }
 
     private void insertAt(Entry entry, int index) {
         items[index] = entry;
-        keys.put(entry.key, index);
+        indexes.put(entry.key, index);
         count++;
     }
 
