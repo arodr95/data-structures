@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class LinearHashMap {
@@ -14,7 +16,7 @@ public class LinearHashMap {
 
     private Entry[] items;
     private int count;
-    private Set<Integer> keys = new HashSet<>();
+    private Map<Integer, Integer> keys = new HashMap();
 
     public LinearHashMap(int capacity) {
         items = new Entry[capacity];
@@ -30,7 +32,7 @@ public class LinearHashMap {
     }
 
     public void put(int key, String value) {
-        if (keys.contains(key))
+        if (keys.containsKey(key))
             throw new IllegalArgumentException("Key already exists.");
 
         var index = hash(key);
@@ -45,9 +47,13 @@ public class LinearHashMap {
         throw new IllegalStateException("Map is at capacity.");
     }
 
+    public void get(int key) {
+
+    }
+
     private void insertAt(Entry entry, int index) {
         items[index] = entry;
-        keys.add(entry.key);
+        keys.put(entry.key, index);
         count++;
     }
 
