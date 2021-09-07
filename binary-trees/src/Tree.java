@@ -10,12 +10,10 @@ public class Tree {
     }
 
     private Node root;
-    private int size;
 
     public void insert(int value) {
-        if (isEmpty()) {
+        if (root == null) {
             root = new Node(value);
-            size++;
             return;
         }
 
@@ -24,7 +22,6 @@ public class Tree {
             if (value < current.value) {
                 if (current.leftChild == null) {
                     current.leftChild = new Node(value);
-                    size++;
                     return;
                 }
                 else
@@ -32,7 +29,6 @@ public class Tree {
             } else {
                 if (current.rightChild == null) {
                     current.rightChild = new Node(value);
-                    size++;
                     return;
                 }
                 else
@@ -53,9 +49,5 @@ public class Tree {
         }
 
         return false;
-    }
-
-    private boolean isEmpty() {
-        return size == 0;
     }
 }
