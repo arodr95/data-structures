@@ -7,6 +7,11 @@ public class Tree {
         public Node(int value) {
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return "Node = " + value;
+        }
     }
 
     private Node root;
