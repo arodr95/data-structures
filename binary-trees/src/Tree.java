@@ -17,8 +17,10 @@ public class Tree {
     private Node root;
 
     public void insert(int value) {
+        var node = new Node(value);
+
         if (root == null) {
-            root = new Node(value);
+            root = node;
             return;
         }
 
@@ -26,14 +28,14 @@ public class Tree {
         while (current != null) {
             if (value < current.value) {
                 if (current.leftChild == null) {
-                    current.leftChild = new Node(value);
+                    current.leftChild = node;
                     return;
                 }
                 else
                     current = current.leftChild;
             } else {
                 if (current.rightChild == null) {
-                    current.rightChild = new Node(value);
+                    current.rightChild = node;
                     return;
                 }
                 else
