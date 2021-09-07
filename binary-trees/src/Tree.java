@@ -25,7 +25,7 @@ public class Tree {
         }
 
         var current = root;
-        while (current != null) {
+        while (true) {
             if (value < current.value) {
                 if (current.leftChild == null) {
                     current.leftChild = node;
