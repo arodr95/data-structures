@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,25 +42,33 @@ public class LinearHashMap {
         throw new IllegalStateException("Map is at capacity.");
     }
 
-    // O(1)
+    // O(n)
     public Entry get(int key) {
-        if (!indexes.containsKey(key))
-            throw new IllegalArgumentException("Key does not exist.");
+        if (isEmpty())
+            throw new IllegalStateException("Map is empty.");
 
-        var index = indexes.get(key);
-        return items[index];
+        for (var entry : items)
+            if (entry.key == key)
+                return entry;
+
+        throw new IllegalArgumentException("No such key exists.");
     }
 
-    // O(1)
+    //
     public Entry remove(int key) {
-        if (!indexes.containsKey(key))
-            throw new IllegalArgumentException("Key does not exist.");
+        if (isEmpty())
+            throw new IllegalStateException("Map is empty.");
 
-        var index = indexes.get(key);
-        var item = items[index];
-        items[index] = null;
-        count--;
-        return item;
+        for (var entry : items)
+            if (entry.key == key) {
+                return entry;
+            }
+
+        throw new IllegalArgumentException("No such key exists");
+    }
+
+    private boolean isEmpty() {
+        return size() == 0;
     }
 
     private int hash(int key) {
