@@ -73,7 +73,12 @@ public class Tree {
         traversePostOrder(root);
     }
 
+    public void height() {
+        height(root);
+    }
+
     private void traversePreOrder(Node root) {
+        // base condition - breaks recursion when condition is met
         if (root == null)
             return;
 
@@ -98,5 +103,12 @@ public class Tree {
         traversePostOrder(root.leftChild);
         traversePostOrder(root.rightChild);
         System.out.println(root.value);
+    }
+
+    private int height(Node root) {
+        if (root.leftChild == null && root.rightChild == null)
+            return 0;
+
+        return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
 }
