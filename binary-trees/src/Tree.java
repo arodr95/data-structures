@@ -57,4 +57,46 @@ public class Tree {
 
         return false;
     }
+
+    // overloads method so that call does not need root parameter;
+    // can now change implementation from recursion to iteration and
+    // not affect code outside of this class
+    public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+
+    public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+
+    private void traversePreOrder(Node root) {
+        if (root == null)
+            return;
+
+        System.out.println(root.value);
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+
+    private void traverseInOrder(Node root) {
+        if (root == null)
+            return;
+
+        traverseInOrder(root.leftChild);
+        System.out.println(root.value);
+        traverseInOrder(root.rightChild);
+    }
+
+    private void traversePostOrder(Node root) {
+        if (root == null)
+            return;
+
+        traversePostOrder(root.leftChild);
+        traversePostOrder(root.rightChild);
+        System.out.println(root.value);
+    }
 }
