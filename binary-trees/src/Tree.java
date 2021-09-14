@@ -60,7 +60,7 @@ public class Tree {
 
     // overloads method so that call does not need root parameter;
     // can now change implementation from recursion to iteration and
-    // not affect code outside of this class
+    // not affect code outside this class
     public void traversePreOrder() {
         traversePreOrder(root);
     }
