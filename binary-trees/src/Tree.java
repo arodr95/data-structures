@@ -73,8 +73,8 @@ public class Tree {
         traversePostOrder(root);
     }
 
-    public void height() {
-        height(root);
+    public int height() {
+        return height(root);
     }
 
     private void traversePreOrder(Node root) {
@@ -106,6 +106,9 @@ public class Tree {
     }
 
     private int height(Node root) {
+        if (root == null)
+            return -1;
+
         if (root.leftChild == null && root.rightChild == null)
             return 0;
 
