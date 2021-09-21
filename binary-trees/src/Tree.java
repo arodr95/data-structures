@@ -65,18 +65,6 @@ public class Tree {
         traversePreOrder(root);
     }
 
-    public void traverseInOrder() {
-        traverseInOrder(root);
-    }
-
-    public void traversePostOrder() {
-        traversePostOrder(root);
-    }
-
-    public int height() {
-        return height(root);
-    }
-
     private void traversePreOrder(Node root) {
         // base condition - breaks recursion when condition is met
         if (root == null)
@@ -85,6 +73,10 @@ public class Tree {
         System.out.println(root.value);
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
+    }
+
+    public void traverseInOrder() {
+        traverseInOrder(root);
     }
 
     private void traverseInOrder(Node root) {
@@ -96,6 +88,10 @@ public class Tree {
         traverseInOrder(root.rightChild);
     }
 
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+
     private void traversePostOrder(Node root) {
         if (root == null)
             return;
@@ -105,13 +101,63 @@ public class Tree {
         System.out.println(root.value);
     }
 
+    public int height() {
+        return height(root);
+    }
+
     private int height(Node root) {
         if (root == null)
             return -1;
 
-        if (root.leftChild == null && root.rightChild == null)
+        if (isLeaf(root))
             return 0;
 
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
+    }
+
+    public int min() {
+        return min(root);
+    }
+
+    // O(n) - implementation for a binary tree (postorder traversal)
+    private int min(Node root) {
+        if (isLeaf(root))
+            return root.value;
+
+        var left = min(root.leftChild);
+        var right = min(root.rightChild);
+        return Math.min(Math.min(left, right), root.value);
+    }
+
+    // O(log n) - implementation for binary search tree (find leftmost leaf)
+//    private int min(Node root) {
+//        var current = root;
+//        var last = current;
+//        while (current != null) {
+//            last = current;
+//            current = current.leftChild;
+//        }
+//        return last.value;
+//    }
+
+    public boolean equals(Tree other) {
+        return equals(root, other.root);
+    }
+
+    // O(n) - pre-order traversal
+    private boolean equals (Node first, Node second) {
+        if (first == null && second == null)
+            return true;
+
+        if (first != null && second != null)
+            return first.value == second.value
+                    && equals(first.leftChild, second.leftChild)
+                    && equals(first.rightChild, second.rightChild);
+
+        return false;
+    }
+
+    private boolean isLeaf(Node root) {
+        return root.leftChild == null && root.rightChild == null;
     }
 }
